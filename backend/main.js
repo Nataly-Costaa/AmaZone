@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // informando que a porta será a passada no arquivo .env ou 3000
-const PORT = process.env.BACKEND_PORT || 3000;
+const PORT = process.env.BACKEND_PORT || 3001;
 
 app.listen(PORT,() => { // RODA A PORTA 3000 NO SERVIDOR
     console.log(`Servidor rodando em http://localhost:${PORT}`,);
