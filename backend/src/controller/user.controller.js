@@ -1,22 +1,6 @@
 import UserService from "../service/user.service.js"
-
+import { hash } from 'bcryptjs';
 class UserController {
-    
-    async findUserByEmail(email) {
-        try {
-            // Usa o método 'findUnique' do Prisma para buscar um usuário
-            const user = await prisma.user.findUnique({
-                where: {
-                    email: email, 
-                },
-            });
-            return user;
-        } catch (error) {
-            console.error("Erro ao buscar usuário por e-mail:", error);
-            // Lança um erro para ser tratado pelo controller 
-            throw new Error("Erro no serviço ao buscar usuário.");
-        }
-    }
 
     async getAllUsers(req, res) {
       try {

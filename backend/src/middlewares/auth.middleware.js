@@ -1,4 +1,5 @@
-import { verify } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+const { verify } = jwt;
 
 function authMiddleware(req, res, next) {
     const { authorization } = req.headers;
@@ -7,7 +8,7 @@ function authMiddleware(req, res, next) {
         return res.status(401).json({ message: "Token de autenticação não fornecido." });
     }
 
-    // O formato do token é "Bearer SEU_TOKEN_AQUI"
+    // O formato do token é "Bearer ALGUMA_COISA"
     const [, token] = authorization.split(' ');
 
     try {

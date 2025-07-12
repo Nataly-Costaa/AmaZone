@@ -1,7 +1,8 @@
 
 import UserService from '../service/user.service.js';
 import { compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+const { sign } = jwt;
 
 class AuthController {
     async login(req, res) {

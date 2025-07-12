@@ -1,7 +1,7 @@
 import express from 'express';
 import UserController from "../controller/user.controller.js";
-import authMiddleware from '../middleware/auth.middleware.js'; 
-import { validate } from '../middleware/validation.middleware.js'; 
+import authMiddleware from '../middlewares/auth.middleware.js'; 
+import { validate } from '../middlewares/validation.middleware.js'; 
 import { createUserSchema } from '../schemas/user.schema.js'; 
 
 const userRouter = express.Router();

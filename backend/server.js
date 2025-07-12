@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import express from 'express';
 import userRouter from "./src/routes/user.routes.js"
 import animalRouter from "./src/routes/animal.Route.js";
