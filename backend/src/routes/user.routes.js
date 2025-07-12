@@ -1,15 +1,23 @@
 import express from 'express';
-import UserController from "../controller/user.controller.js"
+import UserController from "../controller/user.controller.js";
+import authMiddleware from '../middleware/auth.middleware.js'; 
+import { validate } from '../middleware/validation.middleware.js'; 
+import { createUserSchema } from '../schemas/user.schema.js'; 
 
 const userRouter = express.Router();
 
+// ROTA PÚBLICA: Criar usuário (cadastro)
+// Adiciona-se a validação do Zod aqui.
+userRouter.post("/cadastrar", validate(createUserSchema), UserController.createUser);
+
+// A partir daqui, todas as rotas precisam de autenticação.
+userRouter.use(authMiddleware);
+
+// ROTAS PROTEGIDAS:
 userRouter.get("/", UserController.getAllUsers);
-
-userRouter.post("/cadastrar", UserController.createUser);
-
 userRouter.put("/atualizar/:id", UserController.updateUser);
-
 userRouter.delete("/deletar/:id", UserController.deleteUser);
+
 
 export default userRouter;
 
