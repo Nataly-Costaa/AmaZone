@@ -11,7 +11,7 @@ const swaggerOptions = {
       description: 'Uma API informativa sobre a fauna e a flora do pulmão do mundo: a floresta amazônica',
       contact: {
         name: 'Squad 2',
-        url: 'https://github.com/Ju-Venan/API---Amazonia',
+        url: 'https://amazone-sznk.onrender.com/',
       },
       license: {
         name: 'MIT',
@@ -20,7 +20,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'http://localhost:3001',
         description: 'Servidor local de desenvolvimento',
       },
     ],

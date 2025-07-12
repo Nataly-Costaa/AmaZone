@@ -1,6 +1,6 @@
 import express from 'express';
 import UserController from "../controller/user.controller.js";
-import authMiddleware from '../middlewares/auth.middleware.js'; 
+import {authenticateToken} from '../middlewares/auth.middleware.js'; 
 import { validate } from '../middlewares/validation.middleware.js'; 
 import { createUserSchema } from '../schemas/user.schema.js'; 
 
@@ -11,7 +11,7 @@ const userRouter = express.Router();
 userRouter.post("/cadastrar", validate(createUserSchema), UserController.createUser);
 
 // A partir daqui, todas as rotas precisam de autenticação.
-userRouter.use(authMiddleware);
+userRouter.use(authenticateToken);
 
 // ROTAS PROTEGIDAS:
 userRouter.get("/", UserController.getAllUsers);

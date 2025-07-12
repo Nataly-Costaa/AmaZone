@@ -1,27 +1,29 @@
 import jwt from 'jsonwebtoken';
-const { verify } = jwt;
+import prisma from "../prisma.js"
 
-function authMiddleware(req, res, next) {
-    const { authorization } = req.headers;
-
-    if (!authorization) {
-        return res.status(401).json({ message: "Token de autenticação não fornecido." });
-    }
-
-    // O formato do token é "Bearer ALGUMA_COISA"
-    const [, token] = authorization.split(' ');
-
+export const authenticateToken = async(req, res, next) => {
     try {
-        const decoded = verify(token, process.env.JWT_SECRET);
-        const { userId } = decoded;
+        const token = req.cookies.authToken;
 
-        // Adiciona o ID do usuário na requisição para uso posterior nos controllers
-        req.userId = userId;
+        if(!token) {
+            return res.status(401).json({ error: "Token não fornecido" });
+        }
 
-        return next();
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await prisma.user.findUnique({
+            where: { id: decoded.userId },
+            select: { id: true, email: true },
+        });
+
+        if (!user) {
+        return res.status(401).json({ error: "Usuário não encontrado" });
+        }
+
+        req.user = user;
+        next();
     } catch (error) {
-        return res.status(401).json({ message: "Token inválido ou expirado." });
+        res.status(401).json({ error: "Token inválido" });
     }
 }
 
-export default authMiddleware;
+// export default authMiddleware;
