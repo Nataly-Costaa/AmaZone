@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Sriracha } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/context/AuthContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const geistSans = Sriracha({
+  weight: "400",
+  variable: "--font-sriracha",
   subsets: ["latin"],
 });
 
@@ -27,7 +23,7 @@ export default function RootLayout({
     <html lang="pt-br">
       <AuthProvider>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} antialiased`}
         >
           {children}
         </body>

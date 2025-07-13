@@ -1,28 +1,36 @@
-"use client"
+"use client";
 
 import { AuthContext } from "@/context/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 interface UserLayoutProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export default function UserLayout({children}:UserLayoutProps) {
-    const userContext = useContext(AuthContext)
+export default function UserLayout({ children }: UserLayoutProps) {
+  const userContext = useContext(AuthContext);
+  const [mounted, setMounted] = useState(false);
 
-    if(!userContext) {
-        return <h1>Error: Contexto de autenticação não encontrado</h1>
-    }
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    if(userContext.loading) {
-        return <h1>Carregando...</h1>
-    }
+  if (!mounted) {
+    // Evita renderizar HTML diferente no SSR
+    return null;
+  }
 
-    if(!userContext.user) {
-        return <h1>Você não estar autenticado com usuario</h1>
-    }
+  if (!userContext) {
+    return <h1>Erro: Contexto de autenticação não encontrado</h1>;
+  }
 
-  return (
-    <main>{children}</main>
-  )
+  if (userContext.loading) {
+    return <h1>Carregando...</h1>;
+  }
+
+  if (!userContext.user) {
+    return <h1>Você não está autenticada com um usuário.</h1>;
+  }
+
+  return <main>{children}</main>;
 }
