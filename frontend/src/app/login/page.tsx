@@ -52,16 +52,22 @@ export default function LoginPage() {
 
   if (!mounted || authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#22a66b]-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="flex flex-col items-center gap-4">
+          <div className="animate-spin h-8 w-8 border-4 border-[#22A66B] border-t-transparent rounded-full"></div>
+          <p className="text-[#22A66B] font-medium">Carregando...</p>
+        </div>
       </div>
     );
   }
 
   if (user?.email) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#22a66b]-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="flex flex-col items-center gap-4">
+          <div className="animate-spin h-8 w-8 border-4 border-[#22A66B] border-t-transparent rounded-full"></div>
+          <p className="text-[#22A66B] font-medium">Carregando...</p>
+        </div>
       </div>
     );
   }
@@ -180,6 +186,15 @@ export default function LoginPage() {
             </button>
           </form>
         </div>
+
+        <div className="absolute bottom-6 right-6 bg-[#f0fdf4] border border-[#22A66B] rounded-lg p-4 shadow-md max-w-xs text-sm text-[#155e3c]">
+  <p className="font-semibold text-[#22A66B] mb-2">🔐 Credenciais de Teste</p>
+
+  <div className="space-y-1">
+    <p><span className="font-medium">E-mail:</span> nome@email.com</p>
+    <p><span className="font-medium">Senha:</span> senha123</p>
+  </div>
+</div>
       </section>
     </main>
   );
