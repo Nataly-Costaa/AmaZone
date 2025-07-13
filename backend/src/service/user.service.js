@@ -24,6 +24,7 @@ class UserService {
           id: true,
           name: true,
           email: true,
+          password: true
         },
       });
 
