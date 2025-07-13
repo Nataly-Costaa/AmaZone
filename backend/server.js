@@ -5,7 +5,6 @@ import userRouter from "./src/routes/user.routes.js"
 import animalRouter from "./src/routes/animal.Route.js";
 import plantsRouter from "./src/routes/plants.routes.js"
 import threatRouter from "./src/routes/threat.routes.js";
-import corsMiddleware from './src/middlewares/cors.js';
 import curiosidadesRouter from './src/routes/curiosidades.routes.js';
 import authRouter from './src/routes/auth.routes.js';
 import { swaggerSpec, swaggerUiServe, swaggerUiSetup } from "./src/swagger.js";
@@ -23,9 +22,6 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
-
-// Aplicar middlewares
-app.use(corsMiddleware); // Aplicar o middleware do CORS antes de outros middlewares
 
 app.use("/auth", authRouter); 
 app.get("/health", (req, res) => {
