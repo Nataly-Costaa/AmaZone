@@ -62,8 +62,8 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="flex h-screen">
-      <section className="bg-[#22A66B] text-white py-12 px-6 w-120 flex flex-col items-center justify-center">
+    <main className="flex flex-col lg:flex-row h-auto lg:h-screen">
+      <section className="bg-[#22A66B] text-white py-12 px-6 w-full lg:w-185 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-evenly w-80 h-50">
           <h1 className="text-4xl text-center">
             Ama<span className="text-[#784545]">Zone</span>
@@ -82,14 +82,14 @@ export default function RegisterPage() {
         </button>
       </section>
 
-      <section className="flex items-center justify-center h-screen w-200">
+      <section className="flex flex-col items-center justify-center w-full h-auto lg:h-screen px-4 py-8 lg:px-0 lg:py-0">
         <div>
           <h2 className="text-[#22a66b] text-2xl font-bold h-20 flex items-center justify-center">
             Cadastro
           </h2>
 
           <form
-            className="flex flex-col items-center justify-around h-[26rem] w-95"
+            className="flex flex-col items-center justify-around h-[26rem] w-90"
             onSubmit={handleSubmit(onSubmit)}
           >
             {/* Mensagem de erro */}

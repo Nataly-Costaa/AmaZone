@@ -73,8 +73,8 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex h-screen">
-      <section className="bg-[#22A66B] text-white py-12 px-6 w-120 flex flex-col items-center justify-center">
+    <main className="flex flex-col lg:flex-row h-auto lg:h-screen">
+      <section className="bg-[#22A66B] text-white py-12 px-6 w-full lg:w-185 flex flex-col items-center justify-center">
         <div className=" flex flex-col items-center justify-evenly w-80 h-50">
           <h1 className="text-4xl text-center">
             Ama<span className="text-[#784545]">Zone</span>
@@ -93,8 +93,8 @@ export default function LoginPage() {
         </button>
       </section>
 
-      <section className="flex items-center justify-center h-screen w-200">
-        <div>
+      <section className="flex flex-col items-center justify-center w-full h-auto lg:h-screen px-4 py-8 lg:px-0 lg:py-0">
+        <div className="h-100">
           <h2 className="text-[#22a66b] text-2xl font-bold h-20 flex items-center justify-center">
             Login
           </h2>
@@ -126,7 +126,7 @@ export default function LoginPage() {
                   {...register("email")}
                   type="email"
                   id="email"
-                  className="bg-[#dadada] w-full h-10 pl-10 pr-4 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#22A66B] text-black"
+                  className="bg-[#dadada] w-95 h-10 pl-10 pr-4 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#22A66B] text-black"
                   placeholder="user@example.com"
                   disabled={isLoading}
                 />
@@ -152,7 +152,7 @@ export default function LoginPage() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   disabled={isLoading}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 focus:outline-none"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 focus:outline-none"
                 >
                   {showPassword ? (
                     <EyeOff className="h-5 w-5 text-[#22a66b]" />
@@ -164,7 +164,7 @@ export default function LoginPage() {
                 <input
                   {...register("password")}
                   type={showPassword ? "text" : "password"}
-                  className="bg-[#dadada] w-full h-10 pl-10 pr-10 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#22A66B] text-black"
+                  className="bg-[#dadada] w-95 h-10 pl-10 pr-10 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#22A66B] text-black"
                   placeholder="********"
                   disabled={isLoading}
                 />
@@ -194,12 +194,12 @@ export default function LoginPage() {
           </form>
         </div>
 
-        <div className="absolute bottom-6 right-6 bg-[#f0fdf4] border border-[#22A66B] rounded-lg p-4 shadow-md max-w-xs text-sm text-[#155e3c]">
-          <p className="font-semibold text-[#22A66B] mb-2">
+        <div className="bg-[#f0fdf4] border border-[#22A66B] rounded-lg p-3 shadow-md max-w-xs w-48 mx-auto  text-sm text-[#155e3c] lg:ml-auto lg:mr-8">
+          <p className="font-semibold text-[#22A66B] mb-2 text-center lg:text-left">
             🔐 Credenciais de Teste
           </p>
 
-          <div className="space-y-1">
+          <div className="space-y-1 text-center lg:text-left">
             <p>
               <span className="font-medium">E-mail:</span> nome@email.com
             </p>
