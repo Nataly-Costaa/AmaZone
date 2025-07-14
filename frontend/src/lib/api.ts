@@ -1,4 +1,4 @@
-import { LoginRequest } from "@/types";
+import { LoginRequest, RegisterRequest } from "@/types";
 import axios from "axios";
 
 const api = axios.create({
@@ -20,6 +20,11 @@ class AuthAPI {
   logout = () => {
     api.post("/auth/logout");
   };
+
+  async register({ name, email, password }: RegisterRequest) {
+    const response = await api.post("/auth/register", { name, email, password });
+    return response.data;
+  }
 }
 
 const authAPI = new AuthAPI();
