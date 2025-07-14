@@ -1,4 +1,4 @@
-import { LoginRequest, RegisterRequest } from "@/types";
+import { Animal, LoginRequest, RegisterRequest } from "@/types";
 import axios from "axios";
 
 const api = axios.create({
@@ -23,6 +23,11 @@ class AuthAPI {
 
   async register({ name, email, password }: RegisterRequest) {
     const response = await api.post("/auth/register", { name, email, password });
+    return response.data;
+  }
+
+  async getAnimals() {
+    const response = await api.get<Animal[]>("/animal");
     return response.data;
   }
 }

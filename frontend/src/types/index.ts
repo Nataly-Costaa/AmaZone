@@ -15,6 +15,15 @@ export interface User {
     password: string
 }
 
+export interface Animal {
+    id: string;
+    nome: string;
+    descricao: string;
+    genero: string;
+    popEstimada: number;
+    nivelAmeaca: string;
+}
+
 export interface AuthContextProps {
     user: User | null;
     loading: boolean;
