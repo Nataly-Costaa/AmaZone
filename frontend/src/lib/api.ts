@@ -2,8 +2,8 @@ import { Animal, LoginRequest, RegisterRequest } from "@/types";
 import axios from "axios";
 
 const api = axios.create({
-    baseURL:process.env.NEXT_PUBLIC_API_URL,
-    withCredentials: true
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  withCredentials: true,
 });
 
 class AuthAPI {
@@ -22,13 +22,22 @@ class AuthAPI {
   };
 
   async register({ name, email, password }: RegisterRequest) {
-    const response = await api.post("/auth/register", { name, email, password });
+    const response = await api.post("/auth/register", {
+      name,
+      email,
+      password,
+    });
     return response.data;
   }
 
   async getAnimals() {
     const response = await api.get<Animal[]>("/animal");
     return response.data;
+  }
+
+  async getPlants() {
+    const response = await api.get("/plantas");
+    return response.data.plantas;
   }
 }
 

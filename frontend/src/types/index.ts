@@ -24,6 +24,15 @@ export interface Animal {
     nivelAmeaca: string;
 }
 
+export interface Plant {
+    id: string;
+    name: string;
+    specie: string;
+    botanicalDescription: string;
+    naturalHabitat: string;
+    benefits: string;
+}
+
 export interface AuthContextProps {
     user: User | null;
     loading: boolean;
