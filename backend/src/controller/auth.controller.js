@@ -5,12 +5,12 @@ import jwt from "jsonwebtoken";
 class AuthController {
   async register(req, res) {
     try {
-      const { email, password } = req.body;
+      const { name, email, password } = req.body;
 
-      if (!email || !password) {
+      if (!name || !email || !password) {
         return res
           .status(400)
-          .json({ error: "Email e senha são obrigatórios" });
+          .json({ error: "Nome, email e senha são obrigatórios" });
       }
 
       // Verificar se usuário já existe
@@ -28,6 +28,7 @@ class AuthController {
       // Criar usuário
       const user = await prisma.user.create({
         data: {
+          name,
           email,
           password: hashedPassword,
         },
@@ -51,6 +52,7 @@ class AuthController {
       const response = {
         user: {
           id: user.id,
+          name: user.name,
           email: user.email,
         },
         token,
