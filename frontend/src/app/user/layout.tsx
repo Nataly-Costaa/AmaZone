@@ -36,7 +36,7 @@ export default function UserLayout({ children }: UserLayoutProps) {
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="bg-red-100 text-red-800 p-6 rounded-lg shadow-md text-center">
           <h1 className="text-xl font-semibold">Acesso negado</h1>
-          <p>Você não está autenticada como usuária.</p>
+          <p>Você não está autenticada como usuário.</p>
         </div>
       </div>
     );
