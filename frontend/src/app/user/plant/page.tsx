@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import authAPI from "@/lib/api";
 import { Plant } from "@/types";
 import Image from "next/image";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 import flower from "../../../../public/flower.jpg";
 import planta1 from "../../../../public/planta1.jpg";
@@ -59,57 +61,61 @@ export default function PlantPage() {
   }
 
   return (
-    <main className="bg-white min-h-screen">
-      <section className="flex flex-wrap w-full px-1 pt-10 pb-8">
-        {[flower, planta1, aquatica, exotic].map((img, index) => (
-          <div key={index} className="w-1/2 sm:w-1/4">
-            <Image
-              src={img}
-              alt={`Imagem planta ${index + 1}`}
-              className="w-full h-64 object-cover"
-              priority={index === 0}
-            />
-          </div>
-        ))}
-      </section>
-
-      <section className="max-w-5xl mx-auto  py-10">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl text-[#6D5E5E] text-center sm:text-left h-25">
-          FLORA AMAZÔNICA
-        </h1>
-
-        <ul className="space-y-8 sm:space-y-10 px-4 sm:px-0">
-          {plants.map((plant) => (
-            <li key={plant.id}>
-              <h2 className="text-lg sm:text-2xl text-green-600 font-bold mb-1 sm:mb-2">
-                {plant.name}
-              </h2>
-
-              <p className="mb-1 italic text-sm sm:text-base text-gray-600">
-                {plant.specie}
-              </p>
-
-              <p className="mb-2 text-sm sm:text-base">
-                {plant.botanicalDescription}
-              </p>
-
-              <p className="mb-2 text-sm sm:text-base">
-                <span className="font-bold text-[#784545]">
-                  Habitat Natural:
-                </span>{" "}
-                {plant.naturalHabitat}
-              </p>
-
-              <p className="text-sm sm:text-base">
-                <span className="font-bold text-[#784545]">Benefícios:</span>{" "}
-                {plant.benefits}
-              </p>
-
-              <hr className="mt-4 sm:mt-6 border-gray-300" />
-            </li>
+    <>
+      <Header/>
+      <main className="bg-white min-h-screen">
+        <section className="flex flex-wrap w-full px-1 pt-10 pb-8">
+          {[flower, planta1, aquatica, exotic].map((img, index) => (
+            <div key={index} className="w-1/2 sm:w-1/4">
+              <Image
+                src={img}
+                alt={`Imagem planta ${index + 1}`}
+                className="w-full h-64 object-cover"
+                priority={index === 0}
+              />
+            </div>
           ))}
-        </ul>
-      </section>
-    </main>
+        </section>
+
+        <section className="max-w-5xl mx-auto  py-10">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl text-[#6D5E5E] text-center sm:text-left h-25">
+            FLORA AMAZÔNICA
+          </h1>
+
+          <ul className="space-y-8 sm:space-y-10 px-4 sm:px-0">
+            {plants.map((plant) => (
+              <li key={plant.id}>
+                <h2 className="text-lg sm:text-2xl text-green-600 font-bold mb-1 sm:mb-2">
+                  {plant.name}
+                </h2>
+
+                <p className="mb-1 italic text-sm sm:text-base text-gray-600">
+                  {plant.specie}
+                </p>
+
+                <p className="mb-2 text-sm sm:text-base">
+                  {plant.botanicalDescription}
+                </p>
+
+                <p className="mb-2 text-sm sm:text-base">
+                  <span className="font-bold text-[#784545]">
+                    Habitat Natural:
+                  </span>{" "}
+                  {plant.naturalHabitat}
+                </p>
+
+                <p className="text-sm sm:text-base">
+                  <span className="font-bold text-[#784545]">Benefícios:</span>{" "}
+                  {plant.benefits}
+                </p>
+
+                <hr className="mt-4 sm:mt-6 border-gray-300" />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+      <Footer/>
+    </>
   );
 }
