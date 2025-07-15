@@ -55,6 +55,43 @@ export default function ThreatsPage() {
           >
             O QUE COLOCA AMAZÔNIA EM RISCO
           </h2>
+            
+            {/* 1 espaço */}
+          <h1
+            style={{
+              color: "green",
+              fontWeight: 600,
+              fontSize: "20px",
+              marginBottom: "2rem",
+              fontStyle: "italic",
+              letterSpacing: "1px",
+            }}
+          >
+            Garimpo ilegal <br></br>
+          </h1>
+              A retirada não autorizada de vegetação nativa para uso agropecuário, exploração madeireira ou especulação fundiária.
+          <h1>
+            <hr style={{ border: "none", borderTop: "2px solid #ccc", margin: "20px 0" }} />
+          </h1>
+
+          {/* 2 espaço */}
+          <h1
+            style={{
+              color: "green",
+              fontWeight: 600,
+              fontSize: "20px",
+              marginBottom: "2rem",
+              fontStyle: "italic",
+              letterSpacing: "1px",
+            }}
+          >
+            Garimpo ilegal <br></br>
+          </h1>
+              A retirada não autorizada de vegetação nativa para uso agropecuário, exploração madeireira ou especulação fundiária.
+          <h1>
+            <hr style={{ border: "none", borderTop: "2px solid #ccc", margin: "20px 0" }} />
+          </h1>
+
           {loading ? (
             <p>Carregando...</p>
           ) : (
