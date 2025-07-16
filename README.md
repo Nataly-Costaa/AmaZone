@@ -56,6 +56,7 @@ Projeto desenvolvido por estudantes da PDA como parte do desafio de conclusão d
 - [Luis Guilherme](https://github.com/Guilherme-lgs)
 - [Samuel](https://github.com/Sam02marques)
 - [Dandara](https://github.com/DanadraDias)
+- [Kauê](https://github.com/kauecalixto)
 
 ## 📝 Licença
 
