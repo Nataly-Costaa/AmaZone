@@ -39,3 +39,9 @@ export interface AuthContextProps {
     login: ({ email, password }: LoginRequest) => Promise<void>;
     logout: ()=>void
 }
+
+export interface Threat {
+    id: string;
+    name: string;
+    description: string;
+}

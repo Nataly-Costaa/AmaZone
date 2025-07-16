@@ -39,7 +39,13 @@ class AuthAPI {
     const response = await api.get("/plantas");
     return response.data.plantas;
   }
+  async getThreat() {
+    const response = await api.get("/threat");
+    return response.data.threats;
+  }
 }
+
+
 
 const authAPI = new AuthAPI();
 export default authAPI;

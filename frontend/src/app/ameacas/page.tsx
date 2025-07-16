@@ -1,140 +1,77 @@
-'use client';
-
-import { useEffect, useState } from "react";
+"use client";
+import Footer from "@/components/Footer"; 
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import authAPI from "@/lib/api";
+import { useEffect, useState } from "react";
+import {Threat} from "../../types/index";
 
-// Tipo dos dados de ameaça recebidos da API
-type Threat = {
-  id: string;
-  name: string;
-  descripiton: string;
-};
 
 export default function ThreatsPage() {
-  const [threats, setThreats] = useState<Threat[]>([]);
-  const [loading, setLoading] = useState(true);
+ const [threats, setThreat] = useState<Threat[]>([]); // Armazena a lista de ameaças vindas da API
+  const [isLoading, setIsLoading] = useState(true); // Define se os dados ainda estão sendo carregados.
+  const [error, setError] = useState<string | null>(null); // Armazena mensagens de erro, se houverem
+  const [mounted, setMounted] = useState(false); // Garante que o componente já foi montado no lado do cliente antes de buscar os dados.
+
+  // Roda uma vez só, logo que o componente é montado.
+  // Atualiza o estado mounted para true.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
-    fetch("https://amazone-sznk.onrender.com/threat")
-      .then((res) => res.json())
-      .then((data) => {
-        setThreats(data);
-        setLoading(false);
-      });
-  }, []);
+    async function fetchThreat() {
+      try {
+        setIsLoading(true); 
+        setError(null);
+        const data = await authAPI.getThreat(); // Chama a API
+        setThreat(data); // Salva as ameaças no estado
+      } catch {
+        setError("Erro ao carregar ameaças.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    if (mounted) {
+      fetchThreat(); // Só busca se o componente estiver montado
+    }
+  }, [mounted]); // Reexecuta se "mounted" mudar
+  
 
   return (
     <>
-      
-      <main style={{ background: "#fff", minHeight: "100vh" }}>
-        <section
+  <Header />
+  <ul>
+    {threats.map((threat) => (
+      <li key={threat.id}>
+        <h2
           style={{
-            background: "url('/fire.jpg') no-repeat center center",
-            backgroundSize: "cover",
-            height: "250px",
-            borderRadius: "0 0 16px 16px",
-          }}
-        />
-        <section
-          style={{
-            padding: "2rem 4rem",
-            maxWidth: "900px",
-            margin: "0 auto",
+            color: "green",
+            fontWeight: 600,
+            fontSize: "20px",
+            marginBottom: "0.5rem",
+            fontStyle: "italic",
+            letterSpacing: "1px",
           }}
         >
-          <h2
-            style={{
-              color: "#6D5E5E",
-              fontWeight: 600,
-              fontSize: "2rem",
-              marginBottom: "2rem",
-              fontStyle: "italic",
-              letterSpacing: "1px",
-            }}
-          >
-            O QUE COLOCA AMAZÔNIA EM RISCO
-          </h2>
-            
-            {/* 1 espaço */}
-          <h1
-            style={{
-              color: "green",
-              fontWeight: 600,
-              fontSize: "20px",
-              marginBottom: "2rem",
-              fontStyle: "italic",
-              letterSpacing: "1px",
-            }}
-          >
-            Garimpo ilegal <br></br>
-          </h1>
-              A retirada não autorizada de vegetação nativa para uso agropecuário, exploração madeireira ou especulação fundiária.
-          <h1>
-            <hr style={{ border: "none", borderTop: "2px solid #ccc", margin: "20px 0" }} />
-          </h1>
-
-          {/* 2 espaço */}
-          <h1
-            style={{
-              color: "green",
-              fontWeight: 600,
-              fontSize: "20px",
-              marginBottom: "2rem",
-              fontStyle: "italic",
-              letterSpacing: "1px",
-            }}
-          >
-            Garimpo ilegal <br></br>
-          </h1>
-              A retirada não autorizada de vegetação nativa para uso agropecuário, exploração madeireira ou especulação fundiária.
-          <h1>
-            <hr style={{ border: "none", borderTop: "2px solid #ccc", margin: "20px 0" }} />
-          </h1>
-
-          {loading ? (
-            <p>Carregando...</p>
-          ) : (
-            threats.map((threat) => (
-              <div
-                key={threat.id}
-                style={{
-                  marginBottom: "2.5rem",
-                  background: "#fff",
-                  borderRadius: "8px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                  padding: "1.5rem 1rem 1rem 1rem",
-                  border: "1px solid #eee",
-                }}
-              >
-                <h3
-                  style={{
-                    color: "#22A66B",
-                    fontWeight: 600,
-                    fontStyle: "italic",
-                    fontSize: "1.2rem",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {threat.name}
-                </h3>
-                <p
-                  style={{
-                    fontStyle: "italic",
-                    color: "#222",
-                    marginBottom: "1rem",
-                    fontSize: "1rem",
-                  }}
-                >
-                  {threat.descripiton}
-                </p>
-                <hr style={{ margin: "0" }} />
-              </div>
-            ))
-          )}
-        </section>
-      </main>
-     
-    </>
+          {threat.name}
+        </h2>
+        <p
+          style={{
+            fontStyle: "italic",
+            fontWeight: 400,
+            fontSize: "15px",
+            marginTop: 0,
+            marginBottom: "1.5rem",
+          }}
+        >
+          {threat.description}
+        </p>
+        <hr />
+      </li>
+    ))}
+  </ul>
+  <Footer />
+</>
   );
 }
