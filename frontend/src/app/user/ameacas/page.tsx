@@ -59,7 +59,6 @@ export default function ThreatsPage() {
     <>
       <Header />
       <main className="bg-white min-h-screen">
-        {/* Seção com imagem de destaque */}
         <section className="relative w-full h-64 sm:h-80 md:h-[500px] lg:h-[600px] xl:h-[350px]">
           <Image
             src={perigo}
@@ -70,7 +69,6 @@ export default function ThreatsPage() {
           />
         </section>
 
-        {/* Seção de conteúdo */}
         <section className="max-w-5xl mx-auto py-10">
           <h1 className="text-2xl sm:text-3xl md:text-4xl text-[#6D5E5E] text-center sm:text-left mb-10">
             O QUE COLOCA A AMAZÔNIA EM RISCO
