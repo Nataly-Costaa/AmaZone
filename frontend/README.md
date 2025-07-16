@@ -91,4 +91,4 @@ Este projeto consome dados da seguinte API:
 ## 📄 Sobre
 Este repositório contém o front-end do projeto AmaZone, desenvolvido como parte de um desafio de aplicação com consumo de API REST e autenticação. O site é responsivo, acessível e está hospedado na Vercel.
 
-> Desenvolvido por [Nataly Costa](https://github.com/Nataly-Costaa), [Luis Guilherme](https://github.com/Guilherme-lgs), [Samuel](https://github.com/Sam02marques), [Dandara](https://github.com/DanadraDias)
+> Desenvolvido por [Nataly Costa](https://github.com/Nataly-Costaa), [Luis Guilherme](https://github.com/Guilherme-lgs), [Samuel](https://github.com/Sam02marques), [Dandara](https://github.com/DanadraDias) e [Kauê](https://github.com/kauecalixto).
