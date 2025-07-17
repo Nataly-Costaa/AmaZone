@@ -113,7 +113,11 @@ class AuthController {
   }
 
   logout(req, res) {
-    res.clearCookie("authToken");
+    res.clearCookie("authToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
     res.json({ message: "Logout realizado com sucesso" });
   }
 }
