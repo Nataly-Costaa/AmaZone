@@ -33,7 +33,7 @@ export default function Header() {
           href="/user/animal"
           className="hover:text-[#784545] transition-colors duration-200"
         >
-          Animal
+          Animais
         </Link>
         <Link
           href="/user/plant"
